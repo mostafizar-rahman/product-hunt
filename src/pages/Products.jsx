@@ -21,7 +21,7 @@ const Products = () => {
               productLayout={productLayout}
             />
             <div
-              className={`grid xl:grid-cols-4 lg:grid-cols-3 grid-cols-2 gap-5 `}
+              className={`grid xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 gap-5 `}
             >
               {products.map(
                 ({ id, brand, color, desc, img, name, price, sizes }) => (

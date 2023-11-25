@@ -42,7 +42,7 @@ export const productsData = [
     rating: 3,
     brand: "guess",
     color: "black",
-    sizes: [ "xl", "xxl"],
+    sizes: [ "xl", "m"],
   },
   {
     id: 4,
@@ -75,7 +75,7 @@ export const productsData = [
     rating: 1,
     brand: "guess",
     color: "black",
-    sizes: ["m", "xxl"],
+    sizes: ["m", "l"],
   },
   {
     id: 7,
@@ -97,7 +97,7 @@ export const productsData = [
     rating: 1,
     brand: "wrnggler",
     color: "black",
-    sizes: ["xl", "xxl"],
+    sizes: ["xl", "m"],
   },
   {
     id: 9,

@@ -1,21 +1,34 @@
 import React, { useState } from "react";
 import { productsData } from "../Utlits/ProductsData";
 
-const SortingBar = ({ setProducts, products, setProductLayout, productLayout }) => {
+const SortingBar = ({
+  setProducts,
+  products,
+  setProductLayout,
+  productLayout,
+}) => {
   const layout = [2, 3, 4, 5];
-  // ----------------- Short product by name
+  // ----------------- Short product
   const handleSort = (e) => {
     const value = e.target.value;
     if (value === "a-z") {
       const sortedProducts = [...products].sort((a, b) =>
-        a.name.localeCompare(b.name)
+        b.name.localeCompare(a.name)
       );
       setProducts(sortedProducts);
     }
     if (value === "z-a") {
       const sortedProducts = [...products].sort((a, b) =>
-        b.name.localeCompare(a.name)
+        a.name.localeCompare(b.name)
       );
+      setProducts(sortedProducts);
+    }
+    if (value === "low-high") {
+      const sortedProducts = [...products].sort((a, b) => a.price - b.price);
+      setProducts(sortedProducts);
+    }
+    if (value === "high-low") {
+      const sortedProducts = [...products].sort((a, b) => b.price - a.price);
       setProducts(sortedProducts);
     }
     if (value === "") {
@@ -33,8 +46,10 @@ const SortingBar = ({ setProducts, products, setProductLayout, productLayout }) 
       <div className={` gap-3 lg:flex hidden `}>
         {layout.map((num) => (
           <div
-          key={num}
-            className={` ${productLayout === num ? "border-lime-500 border":"border"} flex gap-1 p-1 cursor-pointer`}
+            key={num}
+            className={` ${
+              productLayout === num ? "border-lime-500 border" : "border"
+            } flex gap-1 p-1 cursor-pointer`}
             onClick={() => handleProductLayout(num)}
           >
             {num === 2 && (
@@ -74,6 +89,8 @@ const SortingBar = ({ setProducts, products, setProductLayout, productLayout }) 
         <option value="">Short</option>
         <option value="a-z">Alphabetically, A-Z</option>
         <option value="z-a">Alphabetically, Z-A</option>
+        <option value="low-high">Price, Low - High</option>
+        <option value="high-low">Price, High-Low</option>
       </select>
     </div>
   );

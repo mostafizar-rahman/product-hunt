@@ -17,10 +17,10 @@ const Card = ({ id, name, price, desc, img }) => {
           <div
             onClick={() => dispatch(addToCart({ id, name, price, img }))}
             title="Add To Cart"
-            className="bg-white overflow-hidden p-3 absolute top-1/2 left-0 -translate-y-1/2 opacity-0 transition-all duration-500 cursor-pointer group-hover:left-[18%] group-hover:opacity-100 z-40 group/cartIcon  "
+            className="bg-white p-3 absolute top-1/2 left-0 -translate-y-1/2 opacity-0 transition-all duration-500 cursor-pointer group-hover:left-[18%] group-hover:opacity-100 z-40"
           >
-            <TfiShoppingCart className="text-2xl transition-all duration-700  group-hover/cartIcon:-translate-y-10  group-hover/cartIcon:h-0  group-hover/cartIcon:visible" />
-            <TfiShoppingCart className="text-2xl transition-all duration-700 translate-y-10 h-0 invisible group-hover/cartIcon:translate-y-0 group-hover/cartIcon:h-auto group-hover/cartIcon:visible " />
+            <TfiShoppingCart className="text-2xl" />
+            
           </div>
           <div
             title="View Details"
