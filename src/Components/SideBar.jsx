@@ -1,14 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { productsData } from "../Utlits/ProductsData";
 import Checkbox from "./Common/Checkbox";
-import Rating from "./Rating";
 import { FaChevronDown } from "react-icons/fa";
 
-const SideBar = ({ setProducts, products }) => {
-  const ratingNum = [1, 2, 3, 4, 5];
+const SideBar = ({ setProducts }) => {
   const [selectedBrands, setSelectedBrands] = useState([]);
   const [selectedSize, setSelectedSize] = useState([]);
-  const [selectedRating, setSelectedRating] = useState([]);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
 
   // -------- filter unique brand name
@@ -47,15 +44,6 @@ const SideBar = ({ setProducts, products }) => {
     }
   };
 
-  const handleRating = (rating) => {
-    if (selectedRating.includes(rating)) {
-      setSelectedRating(selectedRating.filter((item) => item !== rating));
-    } else {
-      setSelectedRating([...selectedRating, rating]);
-    }
-  };
-
-  //   console.log(selectedRating)
 
   useEffect(() => {
     // Function to apply size filter
@@ -80,7 +68,6 @@ const SideBar = ({ setProducts, products }) => {
         setProducts(filteredProducts);
       } else {
         // setFilteredProducts(data);
-        console.log(data);
         setProducts(data);
       }
     };
@@ -102,21 +89,14 @@ const SideBar = ({ setProducts, products }) => {
       applyBrandFilter(filteredSizes, selectedBrands);
     }
 
-    let filteredRating = productsData.filter((product) => {
-      return selectedRating.some((v) => product.rating.includes(v));
-    });
-    if (filteredRating.length) {
-      setProducts(filteredRating);
-    }
 
     if (
       !selectedBrands.length &&
-      !selectedSize.length &&
-      !selectedRating.length
+      !selectedSize.length
     ) {
       setProducts(productsData);
     }
-  }, [selectedBrands, selectedSize, selectedRating]);
+  }, [selectedBrands, selectedSize]);
 
   return (
     <aside className="">
@@ -151,28 +131,6 @@ const SideBar = ({ setProducts, products }) => {
               return (
                 <li key={index} className="flex items-center gap-2">
                   <Checkbox name={size} handleChange={handleSize} />
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-        <div className="mt-3">
-          <b className="text-base">Rating</b>
-          <ul className="ml-3 mt-1">
-            {ratingNum.map((num) => {
-              return (
-                <li key={num} className="flex items-center gap-2 mb-2">
-                  <input
-                    type="checkbox"
-                    name="rating"
-                    id={num}
-                    onChange={() => handleRating(num)}
-                    className="w-4 h-4"
-                  />
-                  <label htmlhtmlFor={num} className="capitalize">
-                    <Rating star={num} />
-                    {/* {num} */}
-                  </label>
                 </li>
               );
             })}

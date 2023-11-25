@@ -1,11 +1,14 @@
 import React from "react";
 import { TfiClose } from "react-icons/tfi";
-
-import { Link } from "react-router-dom";
 import CartProducts from "./CartProducts";
+import { useNavigate } from "react-router-dom";
 
 const Cart = ({ isOpen, setIsOpen }) => {
-
+  const navigate = useNavigate()
+  const handleRedirectCheckout = () => {
+    navigate("/checkout")
+    setIsOpen(false)
+  };
   return (
     <aside
       className={`max-w-[420px] w-full h-full fixed top-0 transition-all duration-700  ${
@@ -26,12 +29,12 @@ const Cart = ({ isOpen, setIsOpen }) => {
         <h2 className="text-xl font-semibold">Your cart</h2>
         <CartProducts />
         <div className="flex justify-end ">
-          <Link
-            to={"/checkout"}
+          <button
+            onClick={handleRedirectCheckout}
             className="px-9 py-3 border rounded-sm bg-lime-600 text-white text-lg "
           >
             Checkout
-          </Link>
+          </button>
         </div>
       </div>
     </aside>

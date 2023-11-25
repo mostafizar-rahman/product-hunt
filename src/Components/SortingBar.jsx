@@ -4,10 +4,7 @@ import { productsData } from "../Utlits/ProductsData";
 const SortingBar = ({
   setProducts,
   products,
-  setProductLayout,
-  productLayout,
 }) => {
-  const layout = [2, 3, 4, 5];
   // ----------------- Short product
   const handleSort = (e) => {
     const value = e.target.value;
@@ -36,57 +33,10 @@ const SortingBar = ({
     }
   };
 
-  //   ---------------- Layout
-  const handleProductLayout = (value) => {
-    setProductLayout(value);
-  };
-
   return (
-    <div className="flex justify-between  sm:mb-9 mb-5">
-      <div className={` gap-3 lg:flex hidden `}>
-        {layout.map((num) => (
-          <div
-            key={num}
-            className={` ${
-              productLayout === num ? "border-lime-500 border" : "border"
-            } flex gap-1 p-1 cursor-pointer`}
-            onClick={() => handleProductLayout(num)}
-          >
-            {num === 2 && (
-              <>
-                <Span />
-                <Span />
-              </>
-            )}
-            {num === 3 && (
-              <>
-                <Span />
-                <Span />
-                <Span />
-              </>
-            )}
-            {num === 4 && (
-              <>
-                <Span />
-                <Span />
-                <Span />
-                <Span />
-              </>
-            )}
-            {num === 5 && (
-              <>
-                <Span />
-                <Span />
-                <Span />
-                <Span />
-                <Span />
-              </>
-            )}
-          </div>
-        ))}
-      </div>
+    <div className="flex justify-end  sm:mb-9 mb-5">
       <select name="" id="" className="border p-2" onChange={handleSort}>
-        <option value="">Short</option>
+        <option value="">Sort</option>
         <option value="a-z">Alphabetically, A-Z</option>
         <option value="z-a">Alphabetically, Z-A</option>
         <option value="low-high">Price, Low - High</option>

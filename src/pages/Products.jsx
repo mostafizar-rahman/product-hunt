@@ -6,7 +6,6 @@ import Card from "../Components/Card";
 
 const Products = () => {
   const [products, setProducts] = useState(productsData);
-  const [productLayout, setProductLayout] = useState(4);
 
   return (
     <>
@@ -17,8 +16,6 @@ const Products = () => {
             <SortingBar
               setProducts={setProducts}
               products={products}
-              setProductLayout={setProductLayout}
-              productLayout={productLayout}
             />
             <div
               className={`grid xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 gap-5 `}
